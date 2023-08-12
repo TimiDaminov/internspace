@@ -59,3 +59,11 @@
     background-image: none;
   }
 }
+
+.footer-container {
+  background-color: #3594EC;
+  min-height: 250px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

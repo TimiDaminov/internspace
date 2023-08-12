@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 const Footer = () => {
   return (
-    <footer style={{ backgroundColor: "#3594EC", minHeight: "250px" }}>
+    <footer className="footer-container">
       <Box
         sx={{
           display: "flex",
@@ -50,8 +50,6 @@ const Footer = () => {
                 display: {
                   lg: "block",
                   xl: "block",
-                  sm: "none",
-                  xs: "none",
                 },
               }}
               src={instaIcon}
@@ -64,8 +62,6 @@ const Footer = () => {
                 display: {
                   lg: "block",
                   xl: "block",
-                  sm: "none",
-                  xs: "none",
                 },
               }}
               src={twitterIcon}
@@ -78,8 +74,6 @@ const Footer = () => {
                 display: {
                   lg: "block",
                   xl: "block",
-                  sm: "none",
-                  xs: "none",
                 },
               }}
               src={linkedinIcon}
