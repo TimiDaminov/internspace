@@ -4,7 +4,11 @@ import WhySection from "../components/WhySection";
 import BenefitSection from "../components/BenefitSection";
 import { TextField, Container, Typography, Box, Button } from "@mui/material";
 import "../App.css";
+import { useTheme, useMediaQuery } from "@mui/material";
 const Home = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <>
       <Header />
@@ -26,7 +30,7 @@ const Home = () => {
           <Typography
             sx={{
               color: "#fff",
-              fontSize: "40px",
+              fontSize: isSmallScreen ? 20 : 40,
               fontWeight: 700,
               textAlign: "center",
               pt: "23px",
@@ -40,14 +44,14 @@ const Home = () => {
           <a
             href="/careers"
             style={{
-              paddingLeft: 116,
-              paddingRight: 116,
-              paddingTop: 22,
-              paddingBottom: 22,
+              paddingLeft: isSmallScreen ? 20 : 116,
+              paddingRight: isSmallScreen ? 20 : 116,
+              paddingTop: isSmallScreen ? 12 : 22,
+              paddingBottom: isSmallScreen ? 12 : 22,
+              fontSize: isSmallScreen ? 12 : 24,
               backgroundColor: "#fff",
               color: "#3594EC",
               borderRadius: 42,
-              fontSize: 24,
               fontWeight: 700,
             }}
           >
@@ -56,7 +60,7 @@ const Home = () => {
         </Box>
       </Container>
       <Typography
-        variant="h1"
+        variant={isSmallScreen ? "h4" : "h1"}
         sx={{ fontWeight: 700, textAlign: "center", mb: "37px" }}
       >
         Contact us
@@ -76,7 +80,7 @@ const Home = () => {
           label="Your email"
           variant="outlined"
           sx={{
-            width: "487px",
+            width: isSmallScreen ? 240 : 487,
             "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
               borderColor: "#3594EC", // Replace with your desired border color
             },
@@ -87,7 +91,7 @@ const Home = () => {
           label="Message"
           variant="outlined"
           sx={{
-            width: "487px",
+            width: isSmallScreen ? 240 : 487,
             "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
               borderColor: "#3594EC", // Replace with your desired border color
             },

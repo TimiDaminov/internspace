@@ -3,8 +3,10 @@ import { TextField, InputAdornment, Container, Box } from "@mui/material";
 import samsung from "../img/companyLogo/samsung.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import CareerItem from "../components/CareerItem";
-
+import { useTheme, useMediaQuery } from "@mui/material";
 const Careers = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Container maxWidth="xl">

@@ -1,0 +1,63 @@
+.header__container {
+  background: url("./img/bg.jpg") no-repeat top center;
+  background-size: cover;
+  height: 100vh;
+  flex-wrap: wrap;
+}
+.header__title,
+.header__subtitle,
+.header__btn {
+  opacity: 0;
+  animation: fade 1s forwards;
+}
+
+.header__title {
+  animation-delay: 0s; /* Title fades in first */
+}
+
+.header__subtitle {
+  animation-delay: 0.60s; /* Subtitle fades in after 2 seconds */
+}
+
+.header__btn {
+  animation-delay: 1.25s; /* Button fades in after 4.5 seconds */
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.header__btn .header__bnt__link {
+  animation: buttonColorChange 3s infinite;
+}
+
+@keyframes buttonColorChange {
+  0%, 100% {
+    background-color: #3594EC;
+    color: #fff;
+  }
+  50% {
+    background-color: #fff;
+    color: #3594EC;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header__container {
+    background-image: none;
+  }
+  .header__bnt__link {
+    padding: 12px 20px;
+  }
+}
+
+.footer-container {
+  background-color: #3594EC;
+  min-height: 250px;
+  width: 100%;
+}

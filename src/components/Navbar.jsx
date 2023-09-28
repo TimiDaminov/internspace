@@ -10,15 +10,8 @@ import {
   MenuItem,
   Button,
   Tooltip,
-  Fade,
-  Backdrop,
-  Modal,
 } from "@mui/material";
-import {
-  Menu as MenuIcon,
-  Avatar,
-  Login as LoginIcon,
-} from "@mui/icons-material";
+import { Menu as MenuIcon, Login as LoginIcon } from "@mui/icons-material";
 import Container from "@mui/material/Container";
 
 const pages = [
@@ -28,13 +21,9 @@ const pages = [
   { name: "About", path: "/about" },
   { name: "Contacts", path: "/contacts" },
 ];
-const settings = ["Profile", "Logout"];
+// const settings = ["Profile", "Logout"];
 
 function Navbar() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -113,120 +102,7 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            slots={{ backdrop: Backdrop }}
-            slotProps={{
-              backdrop: {
-                timeout: 500,
-              },
-            }}
-            sx={{ border: 0 }}
-          >
-            <Fade in={open}>
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  width: 680,
-                  height: 515,
-                  bgcolor: "background.paper",
-                  border: 0,
-                  borderRadius: "50px",
-                  boxShadow: 24,
-                  p: 4,
-                }}
-              >
-                <Typography
-                  color="#3594EC"
-                  variant="h2"
-                  sx={{
-                    fontSize: "36px",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    marginBottom: "45px",
-                  }}
-                >
-                  Welcome to INTERNSPACE!
-                </Typography>
-                <form>
-                  <Box sx={{ textAlign: "center" }}>
-                    <input
-                      type="text"
-                      style={{
-                        padding: "12px 16px",
-                        width: "400px",
-                        marginBottom: "35px",
-                        border: "2px solid #080068",
-                        borderRadius: "5px",
-                        fontSize: "20px",
-                      }}
-                      placeholder="Username"
-                    />
-                    <input
-                      type="email"
-                      style={{
-                        padding: "12px 16px",
-                        width: "400px",
-                        marginBottom: "35px",
-                        border: "2px solid #080068",
-                        borderRadius: "5px",
-                        fontSize: "20px",
-                      }}
-                      placeholder="E-mail"
-                    />
-                    <input
-                      type="password"
-                      style={{
-                        padding: "12px 16px",
-                        width: "400px",
-                        marginBottom: "35px",
-                        border: "2px solid #080068",
-                        borderRadius: "5px",
-                        fontSize: "20px",
-                      }}
-                      placeholder="Password"
-                    />
-                  </Box>
-                  <Box sx={{ textAlign: "center" }}>
-                    <input
-                      type="submit"
-                      value="Get started"
-                      style={{
-                        color: "#fff",
-                        fontSize: "28px",
-                        fontWeight: 800,
-                        padding: "9px 39px",
-                        borderRadius: "10px",
-                        backgroundColor: "#3594EC",
-                        border: "none",
-                        cursor: "pointer",
-                      }}
-                    />
-                    <Typography>Already registered?</Typography>
-                    <Typography
-                      component="button"
-                      sx={{
-                        border: "none",
-                        color: "#3594EC",
-                        background: "#fff",
-                        cursor: "pointer",
-                        fontWeight: "700",
-                      }}
-                    >
-                      Log in
-                    </Typography>
-                  </Box>
-                </form>
-              </Box>
-            </Fade>
-          </Modal>
+
           <Typography
             variant="h5"
             noWrap
@@ -277,9 +153,13 @@ function Navbar() {
                 <Avatar alt="Timur Daminov" src="/static/images/avatar/2.jpg" />
               </IconButton> */}
             </Tooltip>
-            <LoginIcon onClick={handleOpen} />
-
-            <Menu
+            <Link to="/signup">
+              <LoginIcon
+                onClick={handleOpenUserMenu}
+                sx={{ cursor: "pointer" }}
+              />
+            </Link>
+            {/* <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -302,7 +182,7 @@ function Navbar() {
                   </Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

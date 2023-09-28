@@ -9,49 +9,65 @@ import {
   Typography,
 } from "@mui/material";
 import locationIcon from "../img/location.svg";
+
+import { useTheme, useMediaQuery } from "@mui/material";
 const CareerItem = ({ img, header, location, duration, description }) => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Card
       sx={{
-        maxWidth: 1340,
-        display: "flex",
+        maxWidth: isSmallScreen ? 670 : 1340,
+        height: "100%",
+        display: isSmallScreen ? "block" : "flex",
         border: "2px solid #3594EC",
         marginBottom: "40px",
       }}
     >
       <Box
         sx={{
-          height: "332px",
-          width: "300px",
+          height: isSmallScreen ? 166 : 332,
+          width: isSmallScreen ? 150 : 300,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          borderRight: "2px solid #3594Ec",
+          borderRight: isSmallScreen ? "none" : "2px solid #3594Ec",
         }}
       >
         <CardMedia
           sx={{
-            height: "94px",
-            width: "282px",
+            height: isSmallScreen ? 50 : 94,
+            width: isSmallScreen ? 150 : 282,
           }}
           image={img}
           title="company img"
         />
       </Box>
       <CardContent>
-        <Typography component="div" sx={{ fontWeight: 700, fontSize: "36px" }}>
+        <Typography
+          component="div"
+          sx={{ fontWeight: 700, fontSize: isSmallScreen ? 18 : 36 }}
+        >
           {header}
         </Typography>
         <Box sx={{ display: "flex" }}>
           <Box component="img" src={locationIcon} />
-          <Typography sx={{ fontWeight: 700, fontSize: "24px" }}>
+          <Typography
+            sx={{ fontWeight: 700, fontSize: isSmallScreen ? 12 : 24 }}
+          >
             {location}
           </Typography>
         </Box>
-        <Typography sx={{ fontWeight: 700, fontSize: "24px" }}>
+        <Typography sx={{ fontWeight: 700, fontSize: isSmallScreen ? 12 : 24 }}>
           Duration: {duration} month
         </Typography>
-        <Typography sx={{ fontWeight: 700, fontSize: "16px", width: "598px" }}>
+        <Typography
+          sx={{
+            fontWeight: 700,
+            fontSize: "16px",
+            width: isSmallScreen ? 260 : 598,
+          }}
+        >
           {description}
         </Typography>
       </CardContent>

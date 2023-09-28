@@ -5,18 +5,22 @@ import exchange from "../img/exchange.svg";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { useTheme, useMediaQuery } from "@mui/material";
 const BenefitSection = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <div>
       <Typography
         variant="h1"
         sx={{
           fontWeight: 700,
-          fontSize: "72px",
+          fontSize: isSmallScreen ? 36 : 72,
           textAlign: "center",
           mt: "130px",
           mb: "90px",
-          width: "1450px",
+          width: isSmallScreen ? "none" : "1450px",
         }}
       >
         Who Can Benefit from INTERNSPACE?
@@ -32,11 +36,11 @@ const BenefitSection = () => {
             }}
             src={student}
           />
-          <Box sx={{ width: "703px" }}>
+          <Box sx={{ width: isSmallScreen ? 350 : 703 }}>
             <Typography
               sx={{
                 color: "#3594EC",
-                fontSize: "36px",
+                fontSize: isSmallScreen ? 18 : 36,
                 fontWeight: 700,
                 mb: "17px",
               }}
@@ -45,7 +49,7 @@ const BenefitSection = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "24px",
+                fontSize: isSmallScreen ? 12 : 24,
               }}
             >
               Whether you're a high school student, college student, or graduate
@@ -53,7 +57,7 @@ const BenefitSection = () => {
               understand the importance of gaining practical experience
               alongside your academic studies.
             </Typography>
-            <Typography sx={{ fontSize: "24px", mt: "37px" }}>
+            <Typography sx={{ fontSize: isSmallScreen ? 12 : 24, mt: "37px" }}>
               Our platform offers internship opportunities that can complement
               your coursework, provide industry insights, and help you build a
               strong foundation for your future career.
@@ -77,31 +81,33 @@ const BenefitSection = () => {
             }}
             src={exchange}
           />
-          <Box sx={{ width: "703px" }}>
+          <Box sx={{ width: isSmallScreen ? 350 : 703 }}>
             <Typography
               sx={{
                 color: "#3594EC",
-                fontSize: "36px",
+                fontSize: isSmallScreen ? 18 : 36,
                 fontWeight: 700,
                 mb: "17px",
               }}
             >
-              Quality Internship Opportunities:
+              Career Changers
             </Typography>
             <Typography
               sx={{
-                fontSize: "24px",
+                fontSize: isSmallScreen ? 12 : 24,
               }}
             >
-              We carefully curate internship roles to ensure that they provide
-              meaningful learning experiences.
+              Are you considering a career change or transitioning into a new
+              field? Internships can be a valuable way to gain exposure to
+              different industries and acquire the necessary skills to make a
+              successful transition.
             </Typography>
-            <Typography sx={{ fontSize: "24px", mt: "37px" }}>
-              We work closely with our partner companies to ensure that they
-              offer internships that are valuable, engaging, and aligned with
-              your career goals.
+            <Typography sx={{ fontSize: isSmallScreen ? 12 : 24, mt: "37px" }}>
+              INTERNSPACE can connect you with internship opportunities tailored
+              to your new career path, enabling you to gain relevant experience
+              and make informed decisions about your future.
             </Typography>
-            <Typography sx={{ fontSize: "24px", mt: "37px" }}>
+            <Typography sx={{ fontSize: isSmallScreen ? 12 : 24, mt: "37px" }}>
               Your growth and development are our top priorities.
             </Typography>
           </Box>
@@ -124,29 +130,32 @@ const BenefitSection = () => {
             }}
             src={startup}
           />
-          <Box sx={{ width: "703px" }}>
+          <Box sx={{ width: isSmallScreen ? 350 : 703 }}>
             <Typography
               sx={{
                 color: "#3594EC",
-                fontSize: "36px",
+                fontSize: isSmallScreen ? 18 : 36,
                 fontWeight: 700,
                 mb: "17px",
               }}
             >
-              Extensive Internship Network:
+              Startups
             </Typography>
             <Typography
               sx={{
-                fontSize: "24px",
+                fontSize: isSmallScreen ? 12 : 24,
               }}
             >
-              Our commitment to you doesn't end once you secure an internship.
-              We stay connected throughout your internship journey, providing
-              guidance and mentorship along the way.
+              INTERNSPACE provides startups with access to a diverse pool of
+              talented and motivated individuals actively seeking internships.
+              Our platform attracts ambitious students, recent graduates, and
+              individuals eager to gain practical experience in their chosen
+              fields.
             </Typography>
-            <Typography sx={{ fontSize: "24px", mt: "37px" }}>
-              We believe in your potential and want to see you succeed, both
-              during your internship and beyond.
+            <Typography sx={{ fontSize: isSmallScreen ? 12 : 24, mt: "37px" }}>
+              By partnering with us, startups can tap into this talent pool and
+              identify interns who possess the skills and enthusiasm needed to
+              contribute to their organizations.
             </Typography>
           </Box>
         </Box>
@@ -154,14 +163,14 @@ const BenefitSection = () => {
           <a
             href="/"
             style={{
-              paddingLeft: 116,
-              paddingRight: 116,
-              paddingTop: 22,
-              paddingBottom: 22,
+              paddingLeft: isSmallScreen ? 20 : 116,
+              paddingRight: isSmallScreen ? 20 : 116,
+              paddingTop: isSmallScreen ? 12 : 22,
+              paddingBottom: isSmallScreen ? 12 : 22,
               backgroundColor: "#3594EC",
               color: "#fff",
               borderRadius: 42,
-              fontSize: 24,
+              fontSize: isSmallScreen ? 12 : 24,
               fontWeight: 700,
             }}
           >
