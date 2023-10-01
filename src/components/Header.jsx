@@ -2,6 +2,7 @@ import React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { useTheme, useMediaQuery, Box } from "@mui/material";
+import { Link } from "react-router-dom";
 const Header = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -40,8 +41,8 @@ const Header = () => {
           for internships!
         </Typography>
         <div className="header__btn" style={{ marginTop: 44 }}>
-          <a
-            href="/"
+          <Link
+            to="/signup"
             className="header__bnt__link"
             style={{
               paddingLeft: isSmallScreen ? 20 : 116,
@@ -57,7 +58,7 @@ const Header = () => {
             }}
           >
             Join us
-          </a>
+          </Link>
         </div>
       </Container>
     </header>

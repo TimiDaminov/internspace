@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -10,9 +10,11 @@ import {
   MenuItem,
   Button,
   Tooltip,
+  Avatar,
 } from "@mui/material";
 import { Menu as MenuIcon, Login as LoginIcon } from "@mui/icons-material";
 import Container from "@mui/material/Container";
+import { useAuth } from "../contexts/AuthContext";
 
 const pages = [
   { name: "Home", path: "/" },
@@ -21,12 +23,14 @@ const pages = [
   { name: "About", path: "/about" },
   { name: "Contacts", path: "/contacts" },
 ];
-// const settings = ["Profile", "Logout"];
+const settings = ["Profile", "Logout"];
 
 function Navbar() {
+  const { currentUser, logout } = useAuth();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -38,6 +42,15 @@ function Navbar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  async function handleLogout() {
+    setError("");
+    try {
+      await logout();
+      navigate("/");
+    } catch {
+      setError("Failed to logout");
+    }
+  }
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -95,9 +108,13 @@ function Navbar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" fontFamily="Montserrat">
+                  <Link
+                    textAlign="center"
+                    fontFamily="Montserrat"
+                    to={page.path}
+                  >
                     {page.name}
-                  </Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -148,41 +165,43 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Your profile">
-              {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Timur Daminov" src="/static/images/avatar/2.jpg" />
-              </IconButton> */}
-            </Tooltip>
-            <Link to="/signup">
-              <LoginIcon
-                onClick={handleOpenUserMenu}
-                sx={{ cursor: "pointer" }}
-              />
-            </Link>
-            {/* <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" fontFamily="Montserrat">
-                    {setting}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
+            {currentUser ? (
+              <Tooltip title="Your profile">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar src="/static/images/avatar/2.jpg" />
+                </IconButton>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <Typography>{currentUser.email}</Typography>
+                  <MenuItem onClick={handleLogout}>
+                    <Typography textAlign="center" fontFamily="Montserrat">
+                      Logout
+                    </Typography>
+                  </MenuItem>
+                </Menu>
+              </Tooltip>
+            ) : (
+              <Link to="/signup">
+                <LoginIcon
+                  onClick={handleOpenUserMenu}
+                  sx={{ cursor: "pointer" }}
+                />
+              </Link>
+            )}
           </Box>
         </Toolbar>
       </Container>

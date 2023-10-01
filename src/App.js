@@ -24,8 +24,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <AuthProvider>
-          <div className="App" style={{ fontFamily: "Montserrat" }}>
+        <div className="App" style={{ fontFamily: "Montserrat" }}>
+          <AuthProvider>
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
@@ -38,8 +38,8 @@ function App() {
               <Route path="/*" element={<NotFound />} />
             </Routes>
             <Footer />
-          </div>
-        </AuthProvider>
+          </AuthProvider>
+        </div>
       </Router>
     </ThemeProvider>
   );
